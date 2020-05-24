@@ -5,9 +5,7 @@ import SortingVisualizer from './sortingVisualizer/SortingVisualizer.jsx'
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
         <SortingVisualizer></SortingVisualizer>
-      </header>
     </div>
   );
 }

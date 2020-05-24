@@ -20,7 +20,7 @@ export default class SortingVisualizer extends React.Component {
         const array = [];
 
         for (let i = 0; i < NUMBER_OF_ARRAY_BARS; ++i) {
-            array.push(this.randomNumberInRange(50, 600));
+            array.push(this.randomNumberInRange(50, 750));
         }
 
         this.setState({ array });
@@ -32,7 +32,7 @@ export default class SortingVisualizer extends React.Component {
 
     render() {
         const { array } = this.state;
-        
+
         return (
             <div className="array-container">
                 {
