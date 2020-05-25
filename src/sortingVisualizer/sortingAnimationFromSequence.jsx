@@ -3,7 +3,7 @@ const COMPARISON_COLOR = 'red';
 const FINAL_COLOR = 'Salmon';
 
 
-export default class sortingAnimationFromSequence {
+export default class SortingAnimationFromSequence {
     constructor(sortingSequence, sortingSpeedMs) {
         this.timing = 0;
 
