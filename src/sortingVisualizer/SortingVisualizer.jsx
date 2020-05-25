@@ -24,13 +24,16 @@ export default class SortingVisualizer extends React.Component {
     }
 
     initArr() {
-        const array = [];
+        if (this.isSorting === false) {
+            const array = [];
 
-        for (let i = 0; i < NUM_OF_ELEMENTS; ++i) {
-            array.push(this.randomNumberInRange(50, 750));
+            for (let i = 0; i < NUM_OF_ELEMENTS; ++i) {
+                array.push(this.randomNumberInRange(50, 750));
+            }
+
+            this.setState({ array });
         }
 
-        this.setState({ array });
     }
 
     randomNumberInRange(minimum, maximum) {
