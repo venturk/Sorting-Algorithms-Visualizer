@@ -3,8 +3,8 @@ import './SortingVisualizer.css';
 import mergeSortingSequence from '../sortingAlgorithms/MergeSort.jsx';
 import bubbleSortingSequence from '../sortingAlgorithms/BubbleSort.jsx';
 import heapSortingSequence from '../sortingAlgorithms/HeapSort.jsx';
-import sortingAnimationFromSequence from './SortingAnimationFromSequence.jsx';
-// import '../toolbar/Toolbar.css';
+import SortingAnimationFromSequence from './SortingAnimationFromSequence.jsx';
+import '../toolbar/Toolbar.css';
 
 const NUM_OF_ELEMENTS = 125;
 
@@ -42,7 +42,7 @@ export default class SortingVisualizer extends React.Component {
             this.isSorting = true;
 
             const sortingSequence = mergeSortingSequence(this.state.array);
-            let s = new sortingAnimationFromSequence(sortingSequence, ms);
+            let s = new SortingAnimationFromSequence(sortingSequence, ms);
 
             setTimeout(() => {
                 this.isSorting = false;
@@ -55,7 +55,7 @@ export default class SortingVisualizer extends React.Component {
             this.isSorting = true;
 
             const sortingSequence = bubbleSortingSequence(this.state.array);
-            let s = new sortingAnimationFromSequence(sortingSequence, ms);
+            let s = new SortingAnimationFromSequence(sortingSequence, ms);
 
             setTimeout(() => {
                 this.isSorting = false;
@@ -68,7 +68,7 @@ export default class SortingVisualizer extends React.Component {
             this.isSorting = true;
 
             const sortingSequence = heapSortingSequence(this.state.array);
-            let s = new sortingAnimationFromSequence(sortingSequence, ms);
+            let s = new SortingAnimationFromSequence(sortingSequence, ms);
 
             setTimeout(() => {
                 this.isSorting = false;
