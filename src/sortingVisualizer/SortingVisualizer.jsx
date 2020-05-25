@@ -1,11 +1,13 @@
 import React from 'react';
 import './SortingVisualizer.css';
 
-const NUMBER_OF_ARRAY_BARS = 125;
+const NUM_OF_ELEMENTS = 125;
 
 export default class SortingVisualizer extends React.Component {
     constructor(properties) {
         super(properties);
+
+        this.isSorting = false;
 
         this.state = {
             array: [],
@@ -19,7 +21,7 @@ export default class SortingVisualizer extends React.Component {
     initializeArray() {
         const array = [];
 
-        for (let i = 0; i < NUMBER_OF_ARRAY_BARS; ++i) {
+        for (let i = 0; i < NUM_OF_ELEMENTS; ++i) {
             array.push(this.randomNumberInRange(50, 750));
         }
 
