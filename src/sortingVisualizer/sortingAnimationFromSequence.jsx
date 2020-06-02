@@ -1,6 +1,6 @@
-const PRIMARY_COLOR = 'DarkSeaGreen';
-const COMPARISON_COLOR = 'red';
-const FINAL_COLOR = 'Salmon';
+const PRIMARY_COLOR = '#73f7dd';
+const COMPARISON_COLOR = "#e43f5a";
+const FINAL_COLOR = "#e43f5a";
 
 
 export default class SortingAnimationFromSequence {
