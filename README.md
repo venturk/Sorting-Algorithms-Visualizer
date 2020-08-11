@@ -8,3 +8,5 @@ Check out the running app (Please use *Google Chrome*):
 https://venturk.github.io/Sorting-Algorithms-Visualizer/
 
 *There is no support for viewing the app via a phone.*
+
+![Image of Sorting Visualizer in action](https://raw.githubusercontent.com/venturk/Sorting-Algorithms-Visualizer/master/Sorting%20Algorithms%20Visualizer%20-%20In%20Action.png)
