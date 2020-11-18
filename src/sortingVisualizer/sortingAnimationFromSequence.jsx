@@ -1,7 +1,7 @@
 const PRIMARY_COLOR = '#73f7dd';
 const COMPARISON_COLOR = "#e43f5a";
 const FINAL_COLOR = "#e43f5a";
-
+const ORIGINAL_COLOR = "#1f4068"
 
 export default class SortingAnimationFromSequence {
     constructor(sortingSequence, sortingSpeedMs) {
@@ -39,6 +39,14 @@ export default class SortingAnimationFromSequence {
         setTimeout(() => {
             for (let i = 0; i < arrayBars.length; ++i) {
                 arrayBars[i].style.backgroundColor = FINAL_COLOR;
+            }
+        }, sortingSpeedMs * this.timing++);
+
+        this.timing += 250;
+
+        setTimeout(() => {
+            for (let i = 0; i < arrayBars.length; ++i) {
+                arrayBars[i].style.backgroundColor = ORIGINAL_COLOR;
             }
         }, sortingSpeedMs * this.timing++);
 
