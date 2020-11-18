@@ -3,6 +3,7 @@ import './SortingVisualizer.css';
 import mergeSortingSequence from '../sortingAlgorithms/MergeSort.jsx';
 import bubbleSortingSequence from '../sortingAlgorithms/BubbleSort.jsx';
 import heapSortingSequence from '../sortingAlgorithms/HeapSort.jsx';
+import selectionSortingSequence from '../sortingAlgorithms/selectionSort.jsx';
 import SortingAnimationFromSequence from './SortingAnimationFromSequence.jsx';
 import '../toolbar/Toolbar.css';
 
@@ -66,6 +67,19 @@ export default class SortingVisualizer extends React.Component {
         }
     }
 
+    selectionSort(ms) {
+        if (this.isSorting === false) {
+            this.isSorting = true;
+
+            const sortingSequence = selectionSortingSequence(this.state.array);
+            let s = new SortingAnimationFromSequence(sortingSequence, ms);
+
+            setTimeout(() => {
+                this.isSorting = false;
+            }, ms * s.timing);
+        }
+    }
+
     heapSort(ms) {
         if (this.isSorting === false) {
             this.isSorting = true;
@@ -99,6 +113,7 @@ export default class SortingVisualizer extends React.Component {
                                 <li><a href="javascript:void(0);" onClick={() => this.mergeSort(5)}>Merge Sort</a></li>
                                 <li><a href="javascript:void(0);" onClick={() => this.bubbleSort(1)}>Bubble Sort</a></li>
                                 <li><a href="javascript:void(0);" onClick={() => this.heapSort(5)}>Heap Sort</a></li>
+                                <li><a href="javascript:void(0);" onClick={() => this.selectionSort(1)}>Selection Sort</a></li>
                             </ul>
                         </div>
                     </nav>
