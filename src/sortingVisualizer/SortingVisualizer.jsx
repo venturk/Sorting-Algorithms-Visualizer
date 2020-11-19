@@ -10,12 +10,14 @@ import '../toolbar/Toolbar.css';
 const NUM_OF_ELEMENTS = 125;
 
 export default class SortingVisualizer extends React.Component {
-    constructor(properties) {
+    constructor(properties)
+    {
         super(properties);
 
         this.isSorting = false;
 
-        this.state = {
+        this.state =
+        {
             array: [],
         };
     }
@@ -25,10 +27,12 @@ export default class SortingVisualizer extends React.Component {
     }
 
     initArr() {
-        if (this.isSorting === false) {
+        if (false === this.isSorting)
+        {
             const array = [];
 
-            for (let i = 0; i < NUM_OF_ELEMENTS; ++i) {
+            for (let i = 0; i < NUM_OF_ELEMENTS; ++i)
+            {
                 array.push(this.randomNumberInRange(50, 750));
             }
 
@@ -37,57 +41,22 @@ export default class SortingVisualizer extends React.Component {
 
     }
 
-    randomNumberInRange(minimum, maximum) {
+    randomNumberInRange(minimum, maximum)
+    {
         return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
     }
 
-    mergeSort(ms) {
-        if (this.isSorting === false) {
+    sortFunction(ms, sortingSequenceFunc)
+    {
+        if (false === this.isSorting)
+        {
             this.isSorting = true;
 
-            const sortingSequence = mergeSortingSequence(this.state.array);
+            const sortingSequence = sortingSequenceFunc(this.state.array);
             let s = new SortingAnimationFromSequence(sortingSequence, ms);
 
-            setTimeout(() => {
-                this.isSorting = false;
-            }, ms * s.timing);
-        }
-    }
-
-    bubbleSort(ms) {
-        if (this.isSorting === false) {
-            this.isSorting = true;
-
-            const sortingSequence = bubbleSortingSequence(this.state.array);
-            let s = new SortingAnimationFromSequence(sortingSequence, ms);
-
-            setTimeout(() => {
-                this.isSorting = false;
-            }, ms * s.timing);
-        }
-    }
-
-    selectionSort(ms) {
-        if (this.isSorting === false) {
-            this.isSorting = true;
-
-            const sortingSequence = selectionSortingSequence(this.state.array);
-            let s = new SortingAnimationFromSequence(sortingSequence, ms);
-
-            setTimeout(() => {
-                this.isSorting = false;
-            }, ms * s.timing);
-        }
-    }
-
-    heapSort(ms) {
-        if (this.isSorting === false) {
-            this.isSorting = true;
-
-            const sortingSequence = heapSortingSequence(this.state.array);
-            let s = new SortingAnimationFromSequence(sortingSequence, ms);
-
-            setTimeout(() => {
+            setTimeout(() =>
+            {
                 this.isSorting = false;
             }, ms * s.timing);
         }
@@ -110,10 +79,10 @@ export default class SortingVisualizer extends React.Component {
                         <div className="toolbar_navigation-items">
                             <ul>
                                 <li><a href="javascript:void(0);" onClick={() => this.initArr()}>Randomize array</a></li>
-                                <li><a href="javascript:void(0);" onClick={() => this.mergeSort(5)}>Merge Sort</a></li>
-                                <li><a href="javascript:void(0);" onClick={() => this.bubbleSort(1)}>Bubble Sort</a></li>
-                                <li><a href="javascript:void(0);" onClick={() => this.heapSort(5)}>Heap Sort</a></li>
-                                <li><a href="javascript:void(0);" onClick={() => this.selectionSort(1)}>Selection Sort</a></li>
+                                <li><a href="javascript:void(0);" onClick={() => this.sortFunction(5, mergeSortingSequence)}>Merge Sort</a></li>
+                                <li><a href="javascript:void(0);" onClick={() => this.sortFunction(1, bubbleSortingSequence)}>Bubble Sort</a></li>
+                                <li><a href="javascript:void(0);" onClick={() => this.sortFunction(5, heapSortingSequence)}>Heap Sort</a></li>
+                                <li><a href="javascript:void(0);" onClick={() => this.sortFunction(1, selectionSortingSequence)}>Selection Sort</a></li>
                             </ul>
                         </div>
                     </nav>
