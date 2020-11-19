@@ -8,27 +8,43 @@ export default class SortingAnimationFromSequence {
         this.timing = 0;
 
         const arrayBars = document.getElementsByClassName('array-bar');
-        for (let i = 0; i < sortingSequence.length; i++) {
+
+        /* for each soting sequence */
+        for (let i = 0; i < sortingSequence.length; i++)
+        {
             const [barOneIdx, barTwoIdx, barOneHeight, barTwoHeight] = sortingSequence[i];
             const barOne = arrayBars[barOneIdx].style;
             const barTwo = barOneHeight === undefined ? arrayBars[barTwoIdx].style : undefined;
 
-            if (barOneHeight === undefined) {
-                setTimeout(() => {
+            /* current sequence is a comparison sequence */
+            if (undefined === barOneHeight)
+            {
+                /* Comparison animation (the compared bars are colored) */
+                setTimeout(() =>
+                {
                     barOne.backgroundColor = COMPARISON_COLOR;
                     barTwo.backgroundColor = COMPARISON_COLOR;
                 }, sortingSpeedMs * this.timing++);
-                setTimeout(() => {
+
+                /* Return to primary color (comparison is finished) */
+                setTimeout(() =>
+                {
                     barOne.backgroundColor = PRIMARY_COLOR;
                     barTwo.backgroundColor = PRIMARY_COLOR;
                 }, sortingSpeedMs * this.timing++);
             }
-            else {
-                setTimeout(() => {
-                    if (barOneHeight === true) {
+            else    /* bar(s) value should be updated */
+            {
+                setTimeout(() =>
+                {
+                    if (true === barOneHeight)
+                    {
+                        /* Update bar's new height */
                         barOne.height = `${barTwoIdx}px`;
                     }
-                    else {
+                    else
+                    {
+                        /* Update bar's new height */
                         barOne.height = `${barOneHeight}px`;
                         arrayBars[barTwoIdx].style.height = `${barTwoHeight}px`;
                     }
@@ -36,16 +52,27 @@ export default class SortingAnimationFromSequence {
             }
         }
 
-        setTimeout(() => {
-            for (let i = 0; i < arrayBars.length; ++i) {
+        /* color all bars in a FINAL COLOR when sorting is done */
+        setTimeout(() =>
+        {
+            /* for each bar in the array */
+            for (let i = 0; i < arrayBars.length; ++i)
+            {
+                /* color all bars */
                 arrayBars[i].style.backgroundColor = FINAL_COLOR;
             }
         }, sortingSpeedMs * this.timing++);
 
+        /* increase delay */
         this.timing += 250;
 
-        setTimeout(() => {
-            for (let i = 0; i < arrayBars.length; ++i) {
+        /* return to riginal color */
+        setTimeout(() =>
+        {
+            /* for each bar in the array */
+            for (let i = 0; i < arrayBars.length; ++i)
+            {
+                /* color all bars */
                 arrayBars[i].style.backgroundColor = ORIGINAL_COLOR;
             }
         }, sortingSpeedMs * this.timing++);
