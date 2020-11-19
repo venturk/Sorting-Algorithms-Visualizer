@@ -7,9 +7,10 @@ import selectionSortingSequence from '../sortingAlgorithms/selectionSort.jsx';
 import SortingAnimationFromSequence from './SortingAnimationFromSequence.jsx';
 import '../toolbar/Toolbar.css';
 
-const NUM_OF_ELEMENTS = 125;
+const NUM_OF_ELEMENTS = 150;
 
-export default class SortingVisualizer extends React.Component {
+export default class SortingVisualizer extends React.Component
+{
     constructor(properties)
     {
         super(properties);
@@ -22,47 +23,68 @@ export default class SortingVisualizer extends React.Component {
         };
     }
 
-    componentDidMount() {
+    componentDidMount()
+    {
+        /* initialize a random array */
         this.initArr();
     }
 
-    initArr() {
+    initArr()
+    {
+        /* if there is no active sorting sequence */
         if (false === this.isSorting)
         {
             const array = [];
-
+            
+            /* for each element in the array */
             for (let i = 0; i < NUM_OF_ELEMENTS; ++i)
             {
+                /* set a random height (value) */
                 array.push(this.randomNumberInRange(50, 750));
             }
 
+            /* update array */
             this.setState({ array });
         }
 
     }
 
-    randomNumberInRange(minimum, maximum)
+    randomNumberInRange(min, max)
     {
-        return Math.floor(Math.random() * (maximum - minimum + 1)) + minimum;
+        return Math.floor(Math.random() * (max - min + 1)) + min;
     }
 
-    sortFunction(ms, sortingSequenceFunc)
+    sortFunction(animation_speed, sortingSequenceFunc)
     {
+        /* if there is no sorting at the moment */
         if (false === this.isSorting)
         {
+            /* set sorting flag */
             this.isSorting = true;
 
+            /* get sorting sequence animation */
             const sortingSequence = sortingSequenceFunc(this.state.array);
-            let s = new SortingAnimationFromSequence(sortingSequence, ms);
 
+            /*
+                run animation of sorting sequence
+                and set the sorting duration
+            */
+            let sorting_time = new SortingAnimationFromSequence(sortingSequence,
+                                                    animation_speed);
+            
+            /*
+                set sorting flag to false
+                only after sorting sequence is over
+            */
             setTimeout(() =>
             {
                 this.isSorting = false;
-            }, ms * s.timing);
+            }, animation_speed * sorting_time.timing);
         }
     }
 
-    render() {
+    render()
+    {
         const { array } = this.state;
 
         return (
@@ -89,8 +111,10 @@ export default class SortingVisualizer extends React.Component {
                 </haeader>
 
                 {
-                    array.map((value, idx) => (
-                        <div className="array-bar" key={idx} style={{ height: `${value}px` }}>
+                    array.map((value, idx) =>
+                    (
+                        <div className="array-bar" key={idx}
+                                            style={{ height: `${value}px` }}>
                             {'.'}
                         </div>
                     ))
