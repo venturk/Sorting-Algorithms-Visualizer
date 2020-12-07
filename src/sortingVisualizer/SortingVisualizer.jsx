@@ -3,6 +3,7 @@ import './SortingVisualizer.css';
 import mergeSortingSequence from '../sortingAlgorithms/MergeSort.jsx';
 import bubbleSortingSequence from '../sortingAlgorithms/BubbleSort.jsx';
 import heapSortingSequence from '../sortingAlgorithms/HeapSort.jsx';
+import quickSortingSequence from '../sortingAlgorithms/QuickSort.jsx';
 import selectionSortingSequence from '../sortingAlgorithms/selectionSort.jsx';
 import SortingAnimationFromSequence from './SortingAnimationFromSequence.jsx';
 import '../toolbar/Toolbar.css';
@@ -105,6 +106,7 @@ export default class SortingVisualizer extends React.Component
                                 <li><a href="javascript:void(0);" onClick={() => this.sortFunction(1, bubbleSortingSequence)}>Bubble Sort</a></li>
                                 <li><a href="javascript:void(0);" onClick={() => this.sortFunction(5, heapSortingSequence)}>Heap Sort</a></li>
                                 <li><a href="javascript:void(0);" onClick={() => this.sortFunction(1, selectionSortingSequence)}>Selection Sort</a></li>
+                                <li><a href="javascript:void(0);" onClick={() => this.sortFunction(5, quickSortingSequence)}>Quick Sort</a></li>
                             </ul>
                         </div>
                     </nav>
